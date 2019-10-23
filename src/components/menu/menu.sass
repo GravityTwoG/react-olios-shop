@@ -1,0 +1,29 @@
+.Menu
+  padding: 110px 30px 40px
+  height: 100vh
+  overflow: auto
+  box-sizing: border-box
+  background-color: #fff
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  box-shadow: 0px 0px 25px 0px rgba(219, 219, 219, 0.5)
+
+  .categories
+    display: flex
+    flex-direction: column
+    .category
+      margin-bottom: 60px
+
+  .showAll
+    text-decoration: none
+    text-transform: uppercase
+    color: #0023ff
+    font-size: 18px
+    &::after
+      content: ''
+      display: block
+      margin: 12px auto 0
+      width: 50%
+      height: 2px
+      background-color: #0023ff

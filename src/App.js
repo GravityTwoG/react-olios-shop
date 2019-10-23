@@ -1,26 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.sass';
+import Sidebar from './components/sidebar/Sidebar';
+import Menu from './components/menu/Menu';
+import MainPage from './components/MainPage/MainPage'
+import BurgerMenu from './components/burger-menu/BurgerMenu';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      menu: {
+        opened: false
+      }
+    }
+  }
+
+  menuHandler = () => {
+    this.setState( (state) => ({
+      menu: { opened: !state.menu.opened }
+    }))
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Sidebar/>
+        <div className="content">
+          <MainPage/>
+          <BurgerMenu onClick={this.menuHandler} opened={this.state.menu.opened}/>
+        </div>
+        <Menu opened={this.state.menu.opened}/>
+      </div>
+    )
+  }
 }
 
 export default App;
