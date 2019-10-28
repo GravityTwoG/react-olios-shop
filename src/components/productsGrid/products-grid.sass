@@ -1,0 +1,26 @@
+.products-grid
+  display: grid
+  grid-template-columns: 1fr 1fr 1fr 1fr
+  grid-gap: 25px
+  .product-card--big
+    display: flex
+    align-items: center
+    grid-column: span 3
+    .product-card__photo
+      height: 270px
+  @media screen and ( max-width: 1200px )
+    grid-template-columns: 1fr 1fr 1fr
+    grid-gap: 8px
+    .product-card
+      padding: 10px
+    .product-card--big
+      display: block
+      grid-column: span 1
+      .product-card__photo
+        height: 190px
+  @media screen and ( max-width: 767px )
+    grid-template-columns: 1fr 1fr
+    grid-gap: 15px
+  @media screen and ( max-width: 575px )
+    grid-template-columns: 1fr
+

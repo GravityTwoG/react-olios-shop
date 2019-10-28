@@ -2,9 +2,9 @@ $accent: #0023ff;
 
 .sidebar
   box-sizing: border-box
-  height: 100vh
+  height: 100%
   overflow: auto
-  padding: 160px 20px 50px
+  padding: 160px 10px 50px
   background-color: #fff
   display: flex
   flex-direction: column
@@ -16,7 +16,8 @@ $accent: #0023ff;
   .main-logo
     position: absolute
     top: 65px
-    transform: translateY(-100%)
+    left: 50%
+    transform: translate(-50%,-100%)
 
   .nav
     display: flex
@@ -32,9 +33,14 @@ $accent: #0023ff;
       &:first-child
         margin-top: 0
       path
+        fill: #d8d8d8
         transition: fill .2s
       &:hover path
         fill: $accent
   .active
     path
       fill: $accent
+  .BurgerMenu
+    display: none
+    background: transparent
+    box-shadow: none

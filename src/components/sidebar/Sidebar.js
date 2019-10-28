@@ -1,13 +1,14 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './sidebar.sass';
-import logo from './../../images/sidebar/LOGO.png';
-import {ReactComponent as HomeIcon} from './../../images/sidebar/Home.svg';
-import {ReactComponent as BasketIcon} from './../../images/sidebar/Basket.svg';
-import {ReactComponent as SearchIcon} from './../../images/sidebar/Search.svg';
-import {ReactComponent as InIcon} from './../../images/sidebar/In.svg';
+import BurgerMenu from '../burger-menu/BurgerMenu'
+import logo from './img/LOGO.png';
+import {ReactComponent as HomeIcon} from './img/Home.svg';
+import {ReactComponent as BasketIcon} from './img/Basket.svg';
+import {ReactComponent as SearchIcon} from './img/Search.svg';
+import {ReactComponent as AboutIcon} from './img/About.svg';
 
-function Sidebar() {
+function Sidebar(props) {
   return (
     <aside className="sidebar">
       <NavLink to="/home" className="main-logo">
@@ -24,9 +25,12 @@ function Sidebar() {
           <SearchIcon/>
         </NavLink>
       </nav>
-      <NavLink to="/in" className="in nav__item">
-        <InIcon/>
+      <NavLink to="/about" className="in nav__item">
+        <AboutIcon/>
       </NavLink>
+      <BurgerMenu
+        onClick={props.onBurgerMenuClick}
+        opened={props.burgerMenuOpened}/>
     </aside>
   )
 }

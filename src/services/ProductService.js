@@ -29,6 +29,18 @@ class ProductsService {
     return await response.val();
   }
 
+  getProductsByCategory = async (category) => {
+    category = category.toLowerCase()
+    const response = await database.ref('products')
+      .orderByChild('category')
+      .equalTo(category)
+      .once('value');
+    console.log(response.val());
+    console.log(category);
+
+    return response.val();
+  }
+
   getSearchedProducts = async (searchWord) => {
     searchWord = searchWord.toLowerCase();
     const response = await database.ref('products')

@@ -1,6 +1,6 @@
 import React from 'react';
 import './mainPage.sass';
-import Button from '../button/Button';
+import Button from '../../components/button/Button';
 
 function MainPage() {
   return (

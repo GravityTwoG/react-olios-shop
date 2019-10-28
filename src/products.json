@@ -6,7 +6,11 @@
     "imgSize": "1",
     "desc": "Lorem ipsum dolor sit amet.",
     "price": "$55",
-    "id": "1"
+    "id": "1",
+    "category": [
+      "office",
+      "living room"
+    ]
   },
   "auoiwhg" : {
     "name": "White table",
