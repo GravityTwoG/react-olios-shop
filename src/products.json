@@ -1,0 +1,53 @@
+{
+  "products" : {
+    "lugdwpwa": {
+    "name": "Red seat",
+    "imgUrl": "https://img-host.ru/1fiF.jpg",
+    "imgSize": "1",
+    "desc": "Lorem ipsum dolor sit amet.",
+    "price": "$55",
+    "id": "1"
+  },
+  "auoiwhg" : {
+    "name": "White table",
+    "imgUrl": "https://img-host.ru/qKEr.jpg",
+    "imgSize": "3",
+    "desc": "Big white table",
+    "price": "$155",
+    "id": "2"
+  },
+  "awgbdua" : {
+    "name": "Blue seat",
+    "imgUrl": "https://img-host.ru/R5PP.jpg",
+    "imgSize": "1",
+    "desc": "Lorem ipsum dolor sit amet.",
+    "price": "$55",
+    "id": "3"
+  },
+  "aohwndw" : {
+    "name": "Dark seat",
+    "imgUrl": "https://img-host.ru/RB11.jpg",
+    "imgSize": "1",
+    "desc": "Lorem ipsum dolor sit amet.",
+    "price": "$65",
+    "id": "4"
+  },
+  "oqyhwda" : {
+    "name": "Modern bed",
+    "imgUrl": "https://img-host.ru/IdeF.jpg",
+    "imgSize": "1",
+    "desc": "Lorem ipsum dolor sit amet.",
+    "price": "$295",
+    "id": "5"
+  },
+  "ijdwnaw" : {
+    "name": "White seat",
+    "imgUrl": "https://img-host.ru/ExTE.jpg",
+    "imgSize": "1",
+    "desc": "Lorem ipsum dolor sit amet.",
+    "price": "$85",
+    "lastPrice": "$120",
+    "id": "6"
+  }
+  }
+}

@@ -1,12 +1,13 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import './category.sass'
 
 function Category(props) {
   return (
-    <a href="#" className="category">
+    <NavLink to={props.href} className="category">
       <span>{props.name}</span>
       <p>{props.children}</p>
-    </a>
+    </NavLink>
   );
 }
 

@@ -2,24 +2,34 @@
 *:before,
 *:after
   box-sizing: border-box
+
 .App
   display: flex
   width: 100vw
   height: 100vh
   overflow: hidden
+
   font-family: Lato, sans-serif
   font-weight: 400
   font-size: 16px
   position: relative
+  background-color: #f0f0f0
+
+  .sidebar
+    position: relative
+    z-index: 5
+
   .content
     width: 100%
     height: 100%
     overflow: auto
+
     .BurgerMenu
       position: absolute
-      top: 20px
+      top: 25px
       right: 35px
       z-index: 4
+
   .Menu
     position: absolute
     top: 0
@@ -27,5 +37,6 @@
     z-index: 3
     transition: transform .3s ease-in-out
     transform: translateX(100%)
+
     &--active
       transform: translateX(0)

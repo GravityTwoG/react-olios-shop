@@ -1,0 +1,45 @@
+.products
+  box-sizing: border-box
+  max-width: 1200px
+  margin: 90px auto 0
+  padding: 0 15px
+  display: flex
+  flex-direction: column
+  &__header
+    display: flex
+    justify-content: space-between
+    align-items: center
+    margin-bottom: 25px
+  &__title
+    font-size: 64px
+    line-height: 1
+    font-weight: 300
+  &__category
+    text-transform: uppercase
+    font-size: 18px
+    color: #c1c1c1
+    display: flex
+    align-items: center
+    span
+      margin-right: 35px
+      white-space: nowrap
+    p
+      margin: 0
+      img
+        width: 50px
+  &__container
+    display: grid
+    grid-template-columns: 1fr 1fr 1fr 1fr
+    grid-gap: 25px
+  .more-products
+    background: none
+    border: none
+    outline: none
+    cursor: pointer
+    display: block
+    margin: 45px auto 20px
+    font-weight: 700
+    font-size: 18px
+    color: #0023ff
+    text-transform: uppercase
+    text-decoration: none
