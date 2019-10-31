@@ -4,8 +4,6 @@ import './product-page.sass';
 import Category from '../../components/category/Category';
 import ProductCard from '../../components/productCard/ProductCard';
 
-import LivingRoomIcon from '../../images/category-icons/Living-room.png';
-
 class ProductPage extends React.Component {
 
   getLastPrice = () => {
@@ -26,7 +24,7 @@ class ProductPage extends React.Component {
           name={product.name}
           desc={product.desc}
           price={product.price}
-          key={product.id}
+          key={id}
         />
       )
     })
@@ -48,9 +46,8 @@ class ProductPage extends React.Component {
         <div className="product__right">
           <div className="product__right-inner">
             <div className="product__header">
-              <div className="product__header-title">Products</div>
-              <Category name="Living room" href="/products/living-room">
-                <img src={LivingRoomIcon} alt=""/>
+              <Category name={this.props.product.category} href="/products/living-room">
+                <img src={this.props.categoryIcon} alt=""/>
               </Category>
             </div>
             <div className="product__info">
@@ -61,8 +58,10 @@ class ProductPage extends React.Component {
               <div className="product__line">
                 <div className="product__price">
                   <div className="product__price-label">Cost</div>
-                  <span className="product__price-curr">{this.props.product.price}</span>
-                  { this.getLastPrice() }
+                  <span>
+                    <span className="product__price-curr">{this.props.product.price}</span>
+                    { this.getLastPrice() }
+                  </span>
                 </div>
                 <div className="product__quantity">
                   <div className="product__quantity-label">Quantity</div>

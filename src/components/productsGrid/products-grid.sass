@@ -3,9 +3,10 @@
   grid-template-columns: 1fr 1fr 1fr 1fr
   grid-gap: 25px
   .product-card--big
-    display: flex
-    align-items: center
     grid-column: span 3
+    a
+      display: flex
+      align-items: center
     .product-card__photo
       height: 270px
   @media screen and ( max-width: 1200px )
@@ -20,7 +21,7 @@
         height: 190px
   @media screen and ( max-width: 767px )
     grid-template-columns: 1fr 1fr
-    grid-gap: 15px
+    grid-gap: 25px
   @media screen and ( max-width: 575px )
     grid-template-columns: 1fr
 

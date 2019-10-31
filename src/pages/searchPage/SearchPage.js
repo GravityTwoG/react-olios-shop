@@ -4,44 +4,48 @@ import './search.sass';
 import ProductCard from '../../components/productCard/ProductCard';
 import ProductsGrid from '../../components/productsGrid/ProductsGrid';
 
-class SearchPage extends React.Component {
+function SearchPage(props) {
 
-  getResults = () => {
-    const productIds = Object.entries(this.props.results);
-    return productIds.map( product => {
-      const id = product[0]
-      product = product[1]
-      return  (
-        <ProductCard
-          href={`/product/${id}`}
-          img={product.imgUrl}
-          name={product.name}
-          desc={product.desc}
-          price={product.price}
-          key={product.id}
-        />
-      )
-    })
+  const getResults = () => {
+    if (props.results) {
+      const productIds = Object.entries(props.results);
+      return productIds.map( product => {
+        const id = product[0]
+        product = product[1]
+        return  (
+          <ProductCard
+            href={`/product/${id}`}
+            img={product.imgUrl}
+            name={product.name}
+            desc={product.desc}
+            price={product.price}
+            key={id}
+          />
+        )
+      })
+    }
   }
 
-  render() {
-    return (
+  const onSearchWordChange = event => {
+    props.updateSearchWord(event.target.value)
+  }
+
+  return (
       <div className="Search">
         <div className="searchForm">
           <div className="searchForm__cont">
-            <input className="searchForm__input" type="text" value={this.props.searchWord} onChange={ (event) => {this.props.searchHandler(event)} }/>
-            <button className="searchForm__reset"/>
+            <input className="searchForm__input" type="text" value={props.searchWord} onChange={onSearchWordChange}/>
+            <button className="searchForm__reset" onClick={props.resetSearchWord}/>
           </div>
           <div className="searchForm__label">Type product that you are looking for</div>
         </div>
         <div className="Search__results">
           <ProductsGrid>
-            {this.getResults()}
+            {getResults()}
           </ProductsGrid>
         </div>
       </div>
     )
-  }
 }
 
 export default SearchPage;

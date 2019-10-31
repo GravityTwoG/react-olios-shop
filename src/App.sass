@@ -4,11 +4,8 @@
   box-sizing: border-box
 
 .App
-  display: flex
-  width: 100vw
-  height: 100vh
-  overflow: hidden
-
+  min-height: 100vh
+  padding-left: 70px
   font-family: Lato, sans-serif
   font-weight: 400
   font-size: 16px
@@ -16,40 +13,42 @@
   background-color: #f0f0f0
 
   .sidebar
-    position: relative
+    position: fixed
+    top: 0
+    left: 0
+    width: 70px
+    height: 100vh
     z-index: 5
 
   .content
     width: 100%
-    height: 100%
-    overflow: hidden
-    overflow-y: auto
+    overflow-x: hidden
 
     .BurgerMenu
-      position: absolute
+      position: fixed
       top: 25px
       right: 35px
       z-index: 5
 
   .Menu
-    position: absolute
+    position: fixed
     top: 0
     right: 0
     z-index: 3
-    transition: transform .3s ease-in-out
     transform: translateX(100%)
 
     &--active
       transform: translateX(0)
   @media screen and ( max-width: 767px )
-    flex-direction: column
+    padding: 60px 0 0
     .BurgerMenu
       display: none
     .sidebar
       padding: 10px 15px 10px 75px
       flex-direction: row
       justify-content: flex-end
-      height: auto
+      width: 100%
+      height: 60px
       .main-logo
         top: 50%
         left: 20px
@@ -57,6 +56,7 @@
       .nav
         flex-direction: row
         &__item
+          width: 30px
           margin: 0
       .BurgerMenu
         display: block

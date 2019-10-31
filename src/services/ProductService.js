@@ -1,5 +1,5 @@
-import firebase from 'firebase/app';
-import 'firebase/database';
+import { firebase } from '@firebase/app';
+import '@firebase/database';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCl5EEFPJsY3ZT2BPlLapt54cpeyNo2rmk",
@@ -17,14 +17,12 @@ const database = firebase.database();
 class ProductsService {
   getProducts = async () => {
     const response = await database.ref('/products').once('value');
-    console.log(response.val());
 
     return await response.val();
   }
 
   getProduct = async (productId) => {
     const response = await database.ref('/products/' + productId).once('value');
-    console.log(response.val());
 
     return await response.val();
   }
@@ -35,8 +33,6 @@ class ProductsService {
       .orderByChild('category')
       .equalTo(category)
       .once('value');
-    console.log(response.val());
-    console.log(category);
 
     return response.val();
   }
@@ -48,7 +44,6 @@ class ProductsService {
       .startAt(searchWord)
       .endAt(searchWord+"\uf8ff")
       .once('value');
-    console.log(response.val());
 
     return response.val();
   }

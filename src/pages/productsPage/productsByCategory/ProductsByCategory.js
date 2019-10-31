@@ -14,21 +14,23 @@ function ProductsByCategory(props) {
   }
 
   const renderProducts = () => {
-    const productIds = Object.entries(props.products);
-    return productIds.map( product => {
-      const id = product[0]
-      product = product[1]
-      return  (
-        <ProductCard
-          href={`/product/${id}`}
-          img={product.imgUrl}
-          name={product.name}
-          desc={product.desc}
-          price={product.price}
-          key={product.id}
-        />
-      )
-    })
+    if (props.products) {
+      const productIds = Object.entries(props.products);
+      return productIds.map( product => {
+        const id = product[0]
+        product = product[1]
+        return  (
+          <ProductCard
+            href={`/product/${id}`}
+            img={product.imgUrl}
+            name={product.name}
+            desc={product.desc}
+            price={product.price}
+            key={id}
+          />
+        )
+      })
+    }
   }
 
   return (

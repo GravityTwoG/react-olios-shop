@@ -1,49 +1,37 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { updateSearchWord, resetSearchWord, requestSearchedProducts } from '../../store/search/actions';
+
 import SearchPage from './SearchPage';
 
-import ProductService from '../../services/ProductService';
-
 class SearchPageContainer extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      searchWord: '',
-      results: []
-    }
-    this.ProductService = new ProductService();
-  }
 
-  getSearchedProducts = async (searchWord) => {
-    this.ProductService.getSearchedProducts(searchWord)
-      .then( results => {
-        if (results) {
-          this.setState({results})
-        } else {
-          this.setState({results: []})
-        }
-      })
-      .catch ( errors => console.log(errors) )
-  }
-
-  searchHandler = (event) => {
-    if (event.target.value.trim().length > 0) {
-      this.getSearchedProducts(event.target.value.trim())
-    } else {
-      this.setState( {
-        results: []
-      })
+  componentDidUpdate(prevProps) {
+    if (this.props.searchWord !== prevProps.searchWord) {
+      this.props.requestSearchedProducts(this.props.searchWord)
     }
-    this.setState({
-      searchWord: event.target.value
-    })
   }
 
   render() {
     return <SearchPage
-      results={this.state.results}
-      searchWord={this.state.searchWord}
-      searchHandler={this.searchHandler}/>
+      results={this.props.results}
+      searchWord={this.props.searchWord}
+      updateSearchWord={this.props.updateSearchWord}
+      resetSearchWord={this.props.resetSearchWord}/>
   }
 }
 
-export default SearchPageContainer;
+const mapStateToProps = state => {
+  return {
+    searchWord: state.search.searchWord,
+    results: state.search.results
+  }
+}
+
+const mapDispatchToProps = {
+  updateSearchWord,
+  resetSearchWord,
+  requestSearchedProducts
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchPageContainer);

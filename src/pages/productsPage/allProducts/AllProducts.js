@@ -18,7 +18,7 @@ class AllProducts extends React.Component {
           name={product.name}
           desc={product.desc}
           price={product.price}
-          key={product.id}
+          key={id}
         />
       )
     })

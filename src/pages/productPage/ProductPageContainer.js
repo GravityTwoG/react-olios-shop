@@ -1,59 +1,79 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { requestProduct, requestRecomended } from '../../store/productPage/actions';
+
 import ProductPage from './ProductPage';
 
-import ProductService from '../../services/ProductService';
+import LivingRoomIcon from '../../images/category-icons/Living-room.png';
+import OfficeIcon from '../../images/category-icons/Office.png';
+import ForKidsIcon from '../../images/category-icons/For-kids.png';
+import KitchenIcon from '../../images/category-icons/Kitchen.png';
+import AccesoriesIcon from '../../images/category-icons/Accesories.png';
 
 class ProductPageContainer extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      product: {},
-      productId: this.props.match.params.id,
-      recomendedProducts: []
-    }
-    this.ProductService = new ProductService()
-  }
 
   componentDidMount() {
-    this.getProduct(this.state.productId);
-    this.getRecomendedProducts();
+    this.props.requestProduct(this.props.match.params.id);
   }
 
-  componentWillReceiveProps(newProps) {
-    if (newProps.match.params.id !== this.productId) {
-      this.setState({
-        productId: newProps.match.params.id
-      });
-      this.getProduct(newProps.match.params.id);
+  componentDidUpdate(prevProps) {
+    if (prevProps.match.params.id !== this.props.match.params.id) {
+      this.props.requestProduct(this.props.match.params.id);
+    }
+    if (prevProps.productCategory !== this.props.productCategory) {
+      this.props.requestRecomended(this.props.productCategory);
     }
   }
 
-  getProduct = async (productId) => {
-    this.ProductService.getProduct(productId)
-      .then( product => {
-        if (product)  { this.setState({product}) }
-      })
-      .catch( errors => {
-        console.log(errors);
-      })
-  }
-
-  getRecomendedProducts = async () => {
-    this.ProductService.getProducts()
-      .then( products => this.setState( {recomendedProducts: products} ) )
-      .catch( errors => console.log(errors) )
+  getCategoryIcon = (category) => {
+    let categoryIcon;
+    switch(category) {
+       case 'living room':
+          categoryIcon =  LivingRoomIcon;
+          break;
+       case 'office':
+          categoryIcon =  OfficeIcon
+          break;
+       case 'for kids':
+          categoryIcon =  ForKidsIcon
+          break;
+       case 'kitchen':
+          categoryIcon =  KitchenIcon
+          break;
+       case 'accesories':
+          categoryIcon =  AccesoriesIcon
+          break;
+       default:
+         return;
+    }
+    return categoryIcon;
   }
 
   render() {
     return (
       <ProductPage
-        product={this.state.product}
-        productId={this.state.productId}
-        recomendedProducts={this.state.recomendedProducts}
+        product={this.props.product}
+        productId={this.props.productId}
+        categoryIcon={this.getCategoryIcon(this.props.productCategory)}
+        recomendedProducts={this.props.recomendedProducts}
         error
       />
     )
   }
 }
 
-export default ProductPageContainer;
+const mapStateToProps = state => {
+  return {
+    product: state.productPage.product,
+    productCategory: state.productPage.product.category,
+    categoryIcon: '',
+    recomendedProducts: state.productPage.recomendedProducts
+  }
+}
+
+const mapDispatchToProps = {
+  requestProduct,
+  requestRecomended
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductPageContainer);
