@@ -5,6 +5,18 @@ import Category from '../../components/category/Category';
 import ProductCard from '../../components/productCard/ProductCard';
 
 class ProductPage extends React.Component {
+  quantity = React.createRef()
+
+  addToCart = () => {
+    this.props.addToCart(this.props.productId, this.quantity.current.value)
+  }
+
+  renderButton = () => {
+    if (this.props.inCart) {
+      return <button className="btn btn--black" onClick={this.addToCart}>In cart</button>
+    }
+    return <button className="btn" onClick={this.addToCart} >Add to cart</button>
+  }
 
   getLastPrice = () => {
     if (this.props.product.lastPrice) {
@@ -65,9 +77,9 @@ class ProductPage extends React.Component {
                 </div>
                 <div className="product__quantity">
                   <div className="product__quantity-label">Quantity</div>
-                  <input className="product__quantity-input" type="number" defaultValue="1"/>
+                  <input className="product__quantity-input" ref={this.quantity} type="number" defaultValue="1"/>
                 </div>
-                <button className="btn">Add to card</button>
+                {this.renderButton()}
               </div>
             </div>
           </div>

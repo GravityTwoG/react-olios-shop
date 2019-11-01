@@ -14,6 +14,7 @@ import MainPage from './pages/mainPage/MainPage';
 import ProductPageContainer from './pages/productPage/ProductPageContainer';
 import Products from './pages/productsPage/Products';
 import SearchPageContainer from './pages/searchPage/SearchPageContainer';
+import BasketContainer from './pages/basketPage/BasketContainer';
 import AboutPage from './pages/aboutPage/AboutPage';
 
 const store = createStore(mainReducer, applyMiddleware(thunk));
@@ -44,6 +45,7 @@ class App extends React.Component {
               <Switch>
                 <Route path="/product/:id" component={ProductPageContainer}/>
                 <Route path="/products" component={Products}/>
+                <Route path="/basket" component={BasketContainer}/>
                 <Route path="/search" component={SearchPageContainer}/>
                 <Route path="/about" component={AboutPage}/>
                 <Route path="/" component={MainPage}/>

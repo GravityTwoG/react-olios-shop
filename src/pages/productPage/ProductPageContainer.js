@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { requestProduct, requestRecomended } from '../../store/productPage/actions';
+import { requestProduct, requestRecomended, addToCart } from '../../store/productPage/actions';
 
 import ProductPage from './ProductPage';
 
@@ -53,10 +53,11 @@ class ProductPageContainer extends React.Component {
     return (
       <ProductPage
         product={this.props.product}
-        productId={this.props.productId}
+        inCart={this.props.inCart}
+        productId={this.props.match.params.id}
         categoryIcon={this.getCategoryIcon(this.props.productCategory)}
         recomendedProducts={this.props.recomendedProducts}
-        error
+        addToCart={this.props.addToCart}
       />
     )
   }
@@ -65,6 +66,7 @@ class ProductPageContainer extends React.Component {
 const mapStateToProps = state => {
   return {
     product: state.productPage.product,
+    inCart: state.productPage.inCart,
     productCategory: state.productPage.product.category,
     categoryIcon: '',
     recomendedProducts: state.productPage.recomendedProducts
@@ -73,7 +75,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   requestProduct,
-  requestRecomended
+  requestRecomended,
+  addToCart
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductPageContainer);
