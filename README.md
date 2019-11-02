@@ -1,5 +1,9 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+My first react app with using react-redux, redux-thunk
+
+https://olios-shop-52e1e.web.app
+
 ## Available Scripts
 
 In the project directory, you can run:
