@@ -31,6 +31,7 @@ function Menu(props) {
       </div>
     )
   }
+
   return (
     <div className={props.opened ? "Menu Menu--active" : "Menu"}>
         {renderCategories()}

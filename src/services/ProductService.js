@@ -34,6 +34,7 @@ class ProductsService {
       .equalTo(category)
       .once('value');
 
+      console.log();
     return response.val();
   }
 

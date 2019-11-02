@@ -28,7 +28,7 @@ class ProductsByCategoryContainer extends React.Component {
       this.computeCategory(this.props.match.params.category);
     }
     if (prevState.category !== this.state.category) {
-      this.props.requestProductsByCategory(this.state.category)
+      this.props.requestProductsByCategory(this.state.category);
     }
   }
 
@@ -83,7 +83,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-  requestProductsByCategory
+  requestProductsByCategory,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsByCategoryContainer);

@@ -3,14 +3,9 @@ import { Link } from "react-router-dom";
 import './product-card.sass';
 
 function ProductCard(props) {
-  let size;
-  if (props.size === '3') {
-    size = 'big'
-  }
-
   return (
-    <div className={`product-card product-card--${size}`}>
-      <Link to={props.href}>
+    <div className="product-card">
+      <Link to={props.href} className="product-card__inner">
         <div className="product-card__photo">
           <img src={props.img} alt=""/>
         </div>

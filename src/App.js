@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.sass';
+
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
@@ -35,11 +36,19 @@ class App extends React.Component {
     }))
   }
 
+  menuClose = (event) => {
+    if (!event.target.classList.contains('BurgerMenu')) {
+      this.setState({
+        menu: { opened: false }
+      })
+    }
+  }
+
   render() {
     return (
       <Provider store={store}>
         <BrowserRouter>
-          <div className="App">
+          <div className="App" onClick={this.menuClose}>
             <Sidebar onBurgerMenuClick={this.menuHandler} burgerMenuOpened={this.state.menu.opened}/>
             <div className="content">
               <Switch>

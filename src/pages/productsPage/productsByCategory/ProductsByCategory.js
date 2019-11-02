@@ -31,6 +31,7 @@ function ProductsByCategory(props) {
         )
       })
     }
+    return null
   }
 
   return (

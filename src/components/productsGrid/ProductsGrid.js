@@ -1,11 +1,25 @@
 import React from 'react';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import './products-grid.sass';
 
 function ProductsGrid(props) {
   return (
-    <div className="products-grid">
-      {props.children}
-    </div>
+    <TransitionGroup
+      className="products-grid"
+    >
+      {props.children && props.children.map( item => {
+        return (
+          <CSSTransition
+            key={item.key}
+            classNames="grid-item"
+            timeout={300}
+          >
+            {item}
+          </CSSTransition>
+        )
+      })
+      }
+    </TransitionGroup>
   )
 }
 

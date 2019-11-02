@@ -2,6 +2,15 @@
   display: grid
   grid-template-columns: 1fr 1fr 1fr 1fr
   grid-gap: 25px
+
+  .grid-item-enter
+    opacity: 0
+    transform: translateY(-20px)
+    &-active
+      transition: .3s
+      transform: none
+      opacity: 1
+
   .product-card--big
     grid-column: span 3
     a

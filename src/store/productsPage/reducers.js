@@ -2,7 +2,7 @@ import { PRODUCTS_PAGE_GET_REQUESTES_PRODUCTS, PRODUCTS_PAGE_GET_REQUESTED_PRODU
 
 const initialState = {
   products: {},
-  productsByCategory: {}
+  productsByCategory: []
 }
 
 export const productsPageReducer = (state = initialState, action) => {
@@ -18,6 +18,8 @@ export const productsPageReducer = (state = initialState, action) => {
         ...state,
         productsByCategory: action.payload
       }
+
+
     default:
       return state
   }
